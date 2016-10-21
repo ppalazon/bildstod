@@ -13,3 +13,5 @@ hs_err_pid*
 .idea/
 bildstod.iml
 target/
+.vertx
+file-uploads
