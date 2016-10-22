@@ -14,6 +14,30 @@
     <artifactId>bildstod</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>Bildstod - Photo REST Repository</name>
+    <description>Open source photo rest repository server</description>
+    <url>https://github.com/ppalazon/bildstod</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Pablo Palazon</name>
+            <email>pablo.palazon@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/ppalazon/bildstod.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ppalazon/bildstod.git</developerConnection>
+        <url>http://github.com/ppalazon/bildstod/tree/master</url>
+    </scm>
+
     <properties>
         <vertx.version>3.3.3</vertx.version>
     </properties>
