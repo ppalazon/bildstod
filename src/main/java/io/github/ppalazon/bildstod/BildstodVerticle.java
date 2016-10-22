@@ -37,17 +37,15 @@ public class BildstodVerticle extends AbstractVerticle
         {
             String code = routingContext.request().getParam("param0");
             String extension = routingContext.request().getParam("param1");
-            String filename = code+"."+extension;
-            if(conf.getString("storage.type").contentEquals("local")) {
+            String filename = code + "." + extension;
+            if (conf.getString("storage.type").contentEquals("local")) {
                 File storagePath = new File(conf.getString("storage.local.path"));
-                if(!storagePath.exists())
-                {
-                    throw new RuntimeException("Local storage "+conf.getString("storage.local.path")+" doesn't exists");
+                if (!storagePath.exists()) {
+                    throw new RuntimeException("Local storage " + conf.getString("storage.local.path") + " doesn't exists");
                 }
                 File imageFile = new File(storagePath, filename);
-                if(!imageFile.exists())
-                {
-                    throw new RuntimeException("File "+imageFile+" doesn't exists");
+                if (!imageFile.exists()) {
+                    throw new RuntimeException("File " + imageFile + " doesn't exists");
                 }
 
                 routingContext.response()
@@ -62,7 +60,7 @@ public class BildstodVerticle extends AbstractVerticle
             Set<FileUpload> fileUploadSet = routingContext.fileUploads();
             for (FileUpload fileUpload : fileUploadSet) {
                 // To get the uploaded file do
-                if(fileUpload.name().contentEquals("file")) {
+                if (fileUpload.name().contentEquals("file")) {
                     String code = RandomStringUtils.random(8, true, true);
                     String extension = ".png";
                     try {
@@ -70,25 +68,23 @@ public class BildstodVerticle extends AbstractVerticle
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    String filename = code+"."+extension;
+                    String filename = code + "." + extension;
 
-                    if(conf.getString("storage.type").contentEquals("local"))
-                    {
+                    if (conf.getString("storage.type").contentEquals("local")) {
                         File storagePath = new File(conf.getString("storage.local.path"));
-                        if(!storagePath.exists())
-                        {
+                        if (!storagePath.exists()) {
                             storagePath.mkdir();
                         }
                         File imageFile = new File(storagePath, filename);
                         try {
                             FileUtils.copyFile(new File(fileUpload.uploadedFileName()), imageFile);
                         } catch (IOException e) {
-                            throw new RuntimeException("Cannot copy files "+e.getMessage());
+                            throw new RuntimeException("Cannot copy files " + e.getMessage());
                         }
 
                         routingContext.response()
                                 .setStatusCode(201)
-                                .putHeader("Location", "/"+code);
+                                .putHeader("Location", "/" + code);
                     }
 
                 }
