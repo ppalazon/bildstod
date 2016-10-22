@@ -95,6 +95,6 @@ public class BildstodVerticle extends AbstractVerticle
             }
         });
 
-        server.requestHandler(router::accept).listen(8080);
+        server.requestHandler(router::accept).listen(conf.getInt("server.port"));
     }
 }
