@@ -3,7 +3,6 @@ package io.github.ppalazon.bildstod;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.http.HttpServer;
 import io.vertx.ext.web.FileUpload;
 import io.vertx.ext.web.Router;
@@ -29,7 +28,6 @@ public class BildstodVerticle extends AbstractVerticle
         Config conf = ConfigFactory.load();
 
         HttpServer server = vertx.createHttpServer();
-        EventBus eventBus = vertx.eventBus();
 
         Router router = Router.router(vertx);
 
